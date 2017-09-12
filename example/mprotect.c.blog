@@ -1,0 +1,4 @@
+<pre class="brush:c">#include &lt;sys/mman.h&gt;
+
+int mprotect(void *addr, size_t len, int prot);
+</pre>
