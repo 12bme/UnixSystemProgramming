@@ -1,0 +1,24 @@
+#include <stdlib.h>
+#include <stdio.h>
+
+int main(void) {
+    FILE *fp;
+    char buf[256];
+
+    fp = popen("date", "r"); // 자식 프로세스에서는 date 명령을 수행.
+    if(fp == NULL) {
+        fprintf(stderr, "popen failed\n");
+        exit(1);
+    }
+    // 부모 프로세스에서는 14행에서 자식 프로세스가 기록한 데이터를 읽고
+    // 저장해  20행에서 출력한다.
+    if(fgets(buf, sizeof(buf), fp) == NULL) {
+        fprintf(stderr, "No data from pipe!\n");
+        exit(1);
+    }
+
+    printf("line : %s\n", buf);
+    pclose(fp);
+
+    return 0;
+}

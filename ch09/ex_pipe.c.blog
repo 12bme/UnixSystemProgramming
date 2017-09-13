@@ -1,0 +1,4 @@
+<pre class="brush:c">#include &lt;unistd.h&gt;
+
+int pipe(int fildes[2]);
+</pre>

@@ -1,0 +1,4 @@
+<pre class="brush:c">#include &lt;sys/stat.h&gt;
+
+int mknod(const char *path, mode_t mode, dev_t dev);
+</pre>

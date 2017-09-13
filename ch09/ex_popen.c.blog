@@ -1,0 +1,4 @@
+<pre class="brush:c">#include &lt;stdio.h&gt;
+
+FILE *popen(const char *command, const char *mode);
+</pre>
