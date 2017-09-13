@@ -1,0 +1,5 @@
+<pre class="brush:c">struct msgbuf {
+    long mtype;
+    char mtext[1];
+}
+</pre>

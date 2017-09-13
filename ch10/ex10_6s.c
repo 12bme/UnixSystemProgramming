@@ -1,0 +1,47 @@
+#include <sys/types.h>
+#include <sys/mman.h>
+#include <signal.h>
+#include <sys/ipc.h>
+#include <sys/shm.h>
+#include <unistd.h>
+#include <stdio.h>
+#include <string.h>
+
+void handler(int dummy) {
+    ;
+}
+
+int main(void) {
+    key_t key;
+    int shmid;
+    void *shmaddr;
+    char buf[1024];
+    sigset_t mask;
+    // 공유 메모리를 생성한다.
+    key = ftok("shmfile", 1);
+    shmid = shmget(key, 1024, IPC_CREAT|0666);
+    // SIGUSR1 시그널을 받을때까지 기다리도록 한다.
+    sigfillset(&mask);
+    sigdelset(&mask, SIGUSR1);
+    sigset(SIGUSR1, handler);
+
+    printf("Listenser wait for Talker\n");
+    sigsuspend(&mask);
+
+    // 시그널을 받으면 공유 메모리를 연결하고,
+    // talker가 공유 메모리에 저장한 데이터를 읽어서 출력한다.
+    printf("Listener Start =====\n");
+    shmaddr = shmat(shmid, NULL, 0);
+    strcpy(buf, shmaddr);
+    printf("Listener recieved : %s\n", buf);
+
+    // 다시 공유 메모리에 응답 데이터를 저장한 후 잠시 sleep 함수를
+    // 실행한다. 공유 메모리의 연결을 끊기 전에 sleep 함수를 실행하는 이유는
+    // talker가 ipcs를 실행할 시간을 주기 위해서다.
+    strcpy(shmaddr, "Have a nice day\n");
+    sleep(3);
+    // 공유 메모리와의 연결을 해제한다.
+    shmdt(shmaddr);
+
+    return 0;
+}

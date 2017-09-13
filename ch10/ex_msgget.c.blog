@@ -1,0 +1,4 @@
+<pre class="brush:c">#include &lt;sys/msg.h&gt;
+
+int msgget(key_t key, int msgflg);
+</pre>

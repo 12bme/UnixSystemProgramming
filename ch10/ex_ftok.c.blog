@@ -1,0 +1,4 @@
+<pre class="brush:c">#include &lt;sys/ipc.h&gt;
+
+key_t ftok(const char *path, int id);
+</pre>

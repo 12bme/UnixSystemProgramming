@@ -1,0 +1,6 @@
+<pre class="brush:c">#include &lt;sys/types.h&gt;
+#include &lt;sys/ipc.h&gt;
+#include &lt;sys/sem.h&gt;
+
+int semop(int semid, struct sembuf *sops, size_t nsops);
+</pre>

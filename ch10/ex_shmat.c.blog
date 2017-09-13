@@ -1,0 +1,5 @@
+<pre class="brush:c">#include &lt;sys/types.h&gt;
+#include &lt;sys/shm.h&gt;
+
+void *shmat(int shmid, const void *shmaddr, int shmflg);
+</pre>

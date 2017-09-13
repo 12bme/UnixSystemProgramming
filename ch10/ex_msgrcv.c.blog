@@ -1,0 +1,4 @@
+<pre class="brush:c">#include &lt;sys/msg.h&gt;
+
+ssize_t msgrcv(int msqid, void *msgp, size_t msgsz, long int msgtyp, int msgflg);
+</pre>

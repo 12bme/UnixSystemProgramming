@@ -1,0 +1,4 @@
+<pre class="brush:c">#include &lt;sys/msg.h&gt;
+
+int msgctl(int msgid, int cmd, struct msqid_ds *buf);
+</pre>
