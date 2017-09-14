@@ -1,0 +1,20 @@
+<pre class="brush:c">#include &lt;netdb.h&gt;
+#include &lt;stdio.h&gt;
+
+int main(void) {
+    struct servent *port;
+    int n;
+
+    setservent(0);
+
+    for(n=0; n&lt;5; n++) {
+        port = getservent();
+        printf("Name=%s, Port=%d\n", port-&gt;s_name,
+                ntohs(port-&gt;s_port));
+    }
+
+    endservent();
+
+    return 0;
+}
+</pre>

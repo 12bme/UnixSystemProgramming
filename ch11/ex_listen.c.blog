@@ -1,0 +1,7 @@
+<pre class="brush:c">#include &lt;sys/types.h&gt;
+#include &lt;sys/socket.h&gt;
+
+// s: socket 함수가 생성한 소켓 기술자.
+// backlog: 최대 허용 클라이언트 수
+int liten(int s, int backlog);
+</pre>

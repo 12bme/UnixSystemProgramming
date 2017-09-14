@@ -1,0 +1,6 @@
+#include <netdb.h>
+
+struct hostent *gethostent(void);
+// stayopen : IP 주소 데이터베이스를 열어둘지 여부를 나타내는 값
+int sethostent(int stayopen);
+int endhostent(void);

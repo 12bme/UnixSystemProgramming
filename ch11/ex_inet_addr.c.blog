@@ -1,0 +1,8 @@
+<pre class="brush:c">#include &lt;sys/types.h&gt;
+#include &lt;sys/scoket.h&gt;
+#include &lt;netinet/in.h&gt;
+#include &lt;arpa/inet.h&gt;
+
+// cp: 문자열 형태 IP 주소
+in_addr_t inet_addr(const char *cp);
+</pre>

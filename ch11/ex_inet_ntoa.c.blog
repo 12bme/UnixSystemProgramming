@@ -1,0 +1,8 @@
+<pre class="brush:c">#include &lt;sys/types.h&gt;
+#include &lt;sys/socket.h&gt;
+#include &lt;netinet/in.h&gt;
+#include &lt;arpa/inet.h&gt;
+
+// in_addr 구조체 형태 IP 주소
+char *inet_ntoa(const struct in_addr in);
+</pre>
