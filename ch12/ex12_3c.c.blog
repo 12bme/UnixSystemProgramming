@@ -1,0 +1,51 @@
+<pre class="brush:c">#include &lt;sys/types.h&gt;
+#include &lt;sys/socket.h&gt;
+#include &lt;unistd.h&gt;
+#include &lt;netdb.h&gt;
+#include &lt;netinet/in.h&gt;
+#include &lt;arpa/inet.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+#define PORTNUM 9000
+
+int main(void) {
+    int sd, len;
+    char buf[256];
+    struct sockaddr_in sin;
+
+    memset((char *)&sin, '\0', sizeof(sin));
+    sin.sin_family = AF_INET;
+    sin.sin_port = htons(PORTNUM);
+    sin.sin_addr.s_addr = inet_addr("127.0.0.1");
+
+    // 서버와 연결하기 위해 서버의 주소를 지정하고 소켓을 생성한다.
+    if((sd = socket(AF_INET, SOCK_STREAM, 0)) == -1) {
+        perror("socket");
+        exit(1);
+    }
+
+    // connect 함수를 호출해 서버와 연결을 요청한다.
+    printf("==&gt; Create Socket\n");
+    if(connect(sd, (struct sockaddr *)&sin, sizeof(sin))) {
+        perror("connect");
+        exit(1);
+    }
+
+    // 서버에서 메시지를 받아 출력한다.
+    printf("==&gt; Connect Server\n");
+    if((len = recv(sd, buf, sizeof(buf), 0)) == -1) {
+        perror("recv");
+        exit(1);
+    }
+    buf[len] = '\0';
+
+    printf("==&gt; From Server : %s\n", buf);
+
+    // 소켓을 닫는다.
+    close(sd);
+
+    return 0;
+}
+</pre>
