@@ -1,0 +1,5 @@
+<pre class="brush:c">struct timeval {
+    long tv_sec;    /* seconds */
+    long tv_use;    /* and microseconds */
+};
+</pre>
