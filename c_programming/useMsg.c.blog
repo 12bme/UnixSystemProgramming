@@ -1,0 +1,31 @@
+<pre class="brush:c">#include &lt;stdio.h&gt;
+#include "msgType.h"
+
+int main(int argc, char* argv[])
+{
+    MessageType message;
+    if(argc &lt; 2)
+    {
+        printf("메시지 타입. request:req, response:res\n");
+        return 0;
+    }
+
+    if(!strncmp(argv[1], "req", 3)) // strncmp: 길이만큼의 문자열 비교
+    {
+        message.messageType = REQUEST;
+        setMsg(&message);
+    }
+    else if(!strncmp(argv[1], "res", 3))
+    {
+        message.messageType = RESPONSE;
+        setMsg(&message);
+    }
+    else
+    {
+        printf("Something is wrong!\n");
+    }
+
+    showMsg(&message);
+    return 0;
+}
+</pre>
