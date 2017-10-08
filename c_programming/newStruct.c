@@ -1,0 +1,13 @@
+struct newStruct {
+    int data1;
+    char data2;
+    char data3[30];
+};
+
+struct newStruct newVal;
+
+struct newStruct {
+    int data1;
+    int data2;
+    char data3[30];
+} newVal;

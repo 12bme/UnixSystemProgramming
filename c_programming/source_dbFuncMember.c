@@ -1,0 +1,4 @@
+#define MAX_FUNC_NUM 10
+#define DBFUNC(command, func) dbFuncMember[(command)]=(func)
+/* 함수 실행을 대행하게 될 대행 함수 */
+int (*dbFuncMember[MAX_FUNC_NUM])();

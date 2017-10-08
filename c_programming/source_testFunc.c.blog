@@ -1,0 +1,6 @@
+<pre class="brush:c">int testFunc(int intVal, char cVal)
+{
+    intVal...;
+    cVal...;
+}
+</pre>

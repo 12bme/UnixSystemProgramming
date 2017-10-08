@@ -1,0 +1,10 @@
+<pre class="brush:c">/* 함수를 가리키는 enum */
+enum db_func {
+    GET_PROCESS_INFO,       /* 0 */
+    GET_ERROR_INFO,
+    GET_DIST_INFO,
+    GET_CPU_INFO,
+    GET_DB_INFO,
+    // ... ... ...
+};
+</pre>
